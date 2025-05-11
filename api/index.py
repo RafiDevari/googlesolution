@@ -1,9 +1,6 @@
 from flask import Flask, render_template, jsonify
 import json
 
-
-import os
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
