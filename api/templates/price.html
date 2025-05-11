@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoomable Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body class="p-4">
+  <h1 class="text-2xl font-bold mb-4 text-center">Price Chart</h1>
+
+  <div style="position: relative; height:400px;">
+    <canvas id="myChart"></canvas>
+  </div>
+</body>
+
+<script>
+  const data = {{ data | safe }}; 
+  const conversionRate = 0.012;
+
+  const tomatoData = data
+    .filter(item => item["Crop"] === "Tomato")
+    .map(item => ({
+      x: item["Date"],
+      y: item["Price (INR/quintal)"] * conversionRate
+    }));
+
+  const opiumData = data
+    .filter(item => item["Crop"] === "Opium")
+    .map(item => ({
+      x: item["Date"],
+      y: item["Price (INR/quintal)"] * conversionRate
+    }));
+
+    const sugarcaneData = data
+    .filter(item => item["Crop"] === "Sugarcane")
+    .map(item => ({
+      x: item["Date"],
+      y: item["Price (INR/quintal)"] * conversionRate
+    }));
+
+    const pomegranateData = data
+    .filter(item => item["Crop"] === "Pomegranate")
+    .map(item => ({
+      x: item["Date"],
+      y: item["Price (INR/quintal)"] * conversionRate
+    }));
+
+
+
+  const allDates = [...tomatoData, ...opiumData].map(d => new Date(d.x));
+  const minDate = new Date(Math.min(...allDates));
+  const maxDate = new Date(Math.max(...allDates));
+
+  function getTimeUnit(range) {
+    const duration = range.max - range.min;
+    const oneDay = 24 * 60 * 60 * 1000;
+    const oneMonth = oneDay * 30;
+    const oneYear = oneMonth * 12;
+
+    if (duration < oneMonth) return 'day';
+    if (duration < oneYear) return 'month';
+    return 'year';
+  }
+
+  const ctx = document.getElementById('myChart').getContext('2d');
+  Chart.register(ChartZoom);
+
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      datasets: [
+        {
+          label: data[0]["Crop"],
+          data: tomatoData,
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          fill: false,
+          tension: 0.1,
+          pointRadius: 2
+        },
+        {
+          label: data[1]["Crop"],
+          data: opiumData,
+          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          fill: false,
+          tension: 0.1,
+          pointRadius: 2
+        },
+        {
+          label: data[6]["Crop"],
+          data: sugarcaneData,
+          borderColor: 'rgba(255, 206, 86, 1)',
+          backgroundColor: 'rgba(255, 206, 86, 0.2)',
+          fill: false,
+          tension: 0.1,
+          pointRadius: 2
+        },
+        {
+          label: data[2]["Crop"],
+          data: pomegranateData,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          fill: false,
+          tension: 0.1,
+          pointRadius: 2
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            unit: 'month',
+            tooltipFormat: 'dd MMM yyyy',
+            displayFormats: {
+              day: 'dd MMM',
+              month: 'MMM yyyy',
+              year: 'yyyy'
+            }
+          },
+          title: {
+            display: true,
+            text: 'Date'
+          },
+          ticks: {
+            maxTicksLimit: 12
+          }
+        },
+        y: {
+          beginAtZero: false,
+          title: {
+            display: true,
+            text: 'Price (USD)'
+          }
+        }
+      },
+      plugins: {
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: 'x',
+            modifierKey: null, 
+            threshold: 10 
+          },
+          zoom: {
+            wheel: {
+              enabled: true
+            },
+            pinch: {
+              enabled: true
+            },
+            mode: 'x',
+            onZoomComplete({ chart }) {
+              const xScale = chart.scales.x;
+              const newUnit = getTimeUnit(xScale);
+              chart.options.scales.x.time.unit = newUnit;
+              chart.update('none');
+            }
+          },
+          limits: {
+            x: {
+              min: minDate.getTime(),
+              max: maxDate.getTime(),
+              minRange: 14 * 24 * 60 * 60 * 1000 
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+</html>
