@@ -12,6 +12,7 @@ def price():
         data = json.load(file)
     
     return render_template('price.html', data=json.dumps(data))
+    
 
 @app.route('/about')
 def about():
