@@ -1,9 +1,6 @@
 from flask import Flask, render_template, jsonify
 import json
 
-
-import os
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -21,4 +18,4 @@ def price():
 def about():
     return render_template('about.html')
 
-app.run(debug=True)
+# app.run(debug=True)
