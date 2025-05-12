@@ -6,6 +6,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/penyakit', methods=['GET'])
+def home():
+    return render_template('kamera.html')
+
 @app.route('/price')
 def price():
     with open('data.json', 'r') as file:
