@@ -7,7 +7,7 @@ def home():
     return render_template('index.html')
 
 @app.route('/penyakit', methods=['GET'])
-def home():
+def kamera():
     return render_template('kamera.html')
 
 @app.route('/price')
