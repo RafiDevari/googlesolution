@@ -10,13 +10,118 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
-<body class="p-4">
-  <h1 class="text-2xl font-bold mb-4 text-center">Price Chart</h1>
+<body>
+  <!-- Chart Section -->
+  <div class="flex flex-col items-center mt-16 px-4 md:px-28">
+    <div class="mb-4 w-full text-center">
+      <h1 class="text-2xl font-bold text-[#537D5D]">Harvest Price Chart</h1>
+    </div>
+    <div class="mb-8 w-full text-center">
+      <h2 class="text-lg text-gray-600">
+        Monitor agricultural commodity price fluctuations for better harvest planning
+      </h2>
+    </div>
+    <div class="w-full bg-white shadow-lg rounded-lg flex justify-center py-4 px-2">
+      <div class="w-full md:w-[85%] h-[300px] md:h-[400px]">
+        <canvas id="myChart" class="w-full h-full"></canvas>
+      </div>
+    </div>
+  </div>
 
-  <div style="position: relative; height:400px;">
-    <canvas id="myChart"></canvas>
+  <!-- Trending Seeds Section -->
+  <div class="mt-16 px-4 md:px-28 mb-16">
+    <h1 class="text-2xl font-bold mb-1">Trending Seeds</h1>
+    <p class="mb-8 text-gray-600">
+      Stay ahead with seeds that are gaining popularity this season:
+    </p>
+
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <!-- Seed Card Template -->
+      <!-- Repeat for each seed -->
+      <div class="bg-white rounded-xl shadow p-4  hover:shadow-lg transition">
+        <div class="flex justify-center mb-2">
+          <img src="../../tumbuhan_senyum.png" alt="Plant" class="h-16" />
+        </div>
+        <h2 class="text-lg font-semibold text-center">Ciherang Rice</h2>
+        <p class="text-sm text-center text-gray-600">Suitable for: Java, Sulawesi</p>
+        <p class="text-sm text-center text-gray-600">Harvest Time: 95–105 days</p>
+        <p class="text-sm text-center text-gray-600 mb-2">Yield Potential: 10–12 tons/ha</p>
+        <div class="flex justify-center text-yellow-400 text-xl">
+          ★★★★★
+        </div>
+      </div>
+
+      <!-- Duplicate and customize the card as needed -->
+      <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
+        <div class="flex justify-center mb-2">
+          <img src="../../tumbuhan_senyum.png" alt="Plant" class="h-16" />
+        </div>
+        <h2 class="text-lg font-semibold text-center">IR64 Rice</h2>
+        <p class="text-sm text-center text-gray-600">Suitable for: Java, Sulawesi</p>
+        <p class="text-sm text-center text-gray-600">Harvest Time: 95–105 days</p>
+        <p class="text-sm text-center text-gray-600 mb-2">Yield Potential: 10–12 tons/ha</p>
+        <div class="flex justify-center text-yellow-400 text-xl">
+          ★★★★★
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-4  hover:shadow-lg transition">
+        <div class="flex justify-center mb-2">
+          <img src="../../tumbuhan_senyum.png" alt="Plant" class="h-16" />
+        </div>
+        <h2 class="text-lg font-semibold text-center">Inpari 32 Rice</h2>
+        <p class="text-sm text-center text-gray-600">Suitable for: Java, Sulawesi</p>
+        <p class="text-sm text-center text-gray-600">Harvest Time: 95–105 days</p>
+        <p class="text-sm text-center text-gray-600 mb-2">Yield Potential: 10–12 tons/ha</p>
+        <div class="flex justify-center text-yellow-400 text-xl">
+          ★★★★★
+        </div>
+      </div>
+
+      <!-- Hybrid Corn Cards -->
+      <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
+        <div class="flex justify-center mb-2">
+          <img src="../../tumbuhan_senyum.png" alt="Plant" class="h-16" />
+        </div>
+        <h2 class="text-lg font-semibold text-center">Hybrid Corn P21</h2>
+        <p class="text-sm text-center text-gray-600">Suitable for: Java, Sulawesi</p>
+        <p class="text-sm text-center text-gray-600">Harvest Time: 95–105 days</p>
+        <p class="text-sm text-center text-gray-600 mb-2">Yield Potential: 10–12 tons/ha</p>
+        <div class="flex justify-center text-yellow-400 text-xl">
+          ★★★★★
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
+        <div class="flex justify-center mb-2">
+          <img src="../../tumbuhan_senyum.png" alt="Plant" class="h-16" />
+        </div>
+        <h2 class="text-lg font-semibold text-center">Hybrid Corn P21</h2>
+        <p class="text-sm text-center text-gray-600">Suitable for: Java, Sulawesi</p>
+        <p class="text-sm text-center text-gray-600">Harvest Time: 95–105 days</p>
+        <p class="text-sm text-center text-gray-600 mb-2">Yield Potential: 10–12 tons/ha</p>
+        <div class="flex justify-center text-yellow-400 text-xl">
+          ★★★★★
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
+        <div class="flex justify-center mb-2">
+          <img src="../../tumbuhan_senyum.png" alt="Plant" class="h-16" />
+        </div>
+        <h2 class="text-lg font-semibold text-center">Hybrid Corn P21</h2>
+        <p class="text-sm text-center text-gray-600">Suitable for: Java, Sulawesi</p>
+        <p class="text-sm text-center text-gray-600">Harvest Time: 95–105 days</p>
+        <p class="text-sm text-center text-gray-600 mb-2">Yield Potential: 10–12 tons/ha</p>
+        <div class="flex justify-center text-yellow-400 text-xl">
+          ★★★★★
+        </div>
+      </div>
+    </div>
   </div>
 </body>
+
+
 
 <script>
   const data = {{ data | safe }}; 
@@ -81,7 +186,7 @@
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           fill: false,
           tension: 0.1,
-          pointRadius: 2
+          pointRadius: 2,
         },
         {
           label: data[1]["Crop"],
@@ -90,7 +195,7 @@
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           fill: false,
           tension: 0.1,
-          pointRadius: 2
+          pointRadius: 2,
         },
         {
           label: data[6]["Crop"],
@@ -99,7 +204,7 @@
           backgroundColor: 'rgba(255, 206, 86, 0.2)',
           fill: false,
           tension: 0.1,
-          pointRadius: 2
+          pointRadius: 2,
         },
         {
           label: data[2]["Crop"],
@@ -108,7 +213,7 @@
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
           fill: false,
           tension: 0.1,
-          pointRadius: 2
+          pointRadius: 2,
         },
       ]
     },
@@ -144,11 +249,57 @@
           beginAtZero: false,
           title: {
             display: true,
-            text: 'Price (USD)'
+            text: 'Price (USD/quintal)'
           }
         }
       },
       plugins: {
+        legend: {
+          onClick: function (e, legendItem, legend) {
+            const chart = legend.chart;
+            const index = legendItem.datasetIndex;
+            const meta = chart.getDatasetMeta(index);
+
+            const visibleCount = chart.data.datasets.filter((_, i) => {
+              const m = chart.getDatasetMeta(i);
+              return !(m.hidden === true);
+            }).length;
+
+            if (!meta.hidden && visibleCount <= 1) {
+              return;
+            }
+
+            meta.hidden = !meta.hidden;
+            chart.update();
+          },
+          labels: {
+            font: {
+              size: 14,
+              weight: 'lighter', // or 'normal', 'lighter', etc.
+              style: 'italic', // optional
+              family: 'Arial', // or any valid CSS font
+           
+            },
+            color: '#333', // font color
+            
+          },
+          
+          position: 'bottom', // 'bottom', 'left', 'right'
+          align: 'end', // 'start', 'center', 'end'
+        },
+        tooltip: {
+          titleFont: {
+            size: 14,
+            weight: 'bold'
+          },
+          bodyFont: {
+            size: 12
+          },
+          footerFont: {
+            size: 10,
+            style: 'italic'
+          }
+        },
         zoom: {
           pan: {
             enabled: true,

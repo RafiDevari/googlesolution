@@ -22,4 +22,8 @@ def price():
 def about():
     return render_template('about.html')
 
+@app.route('/seed')
+def seed():
+    return render_template('seed.html')
+
 # app.run(debug=True)
