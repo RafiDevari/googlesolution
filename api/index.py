@@ -26,4 +26,4 @@ def about():
 def seed():
     return render_template('seed.html')
 
-app.run(debug=True)
+# app.run(debug=True)
