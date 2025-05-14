@@ -24,29 +24,39 @@
         }
     </script>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
-    <header class="bg-white shadow-sm">
+<body class="bg-[#F0F7D2] ">
+    <!-- <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4 flex items-center">
-            <!-- <a href="#" class="text-green-600 text-xl font-bold flex items-center">
+            <a href="#" class="text-green-600 text-xl font-bold flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
                     <path d="m9 12 2 2 4-4"></path>
                 </svg>
                 NutriCheck
-            </a> -->
+            </a>
         </div>
-    </header>
+    </header> -->
 
-    <main class="flex-grow container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-center text-green-600 mb-4">Cek Penyakit tanamanmu!</h1>
+    <main class="flex flex-col container items-center mx-auto  py-8">
+        
+        <div class="flex flex-col items-center  mt-8 px-4 md:px-28">
+            <h1 class="text-3xl font-bold text-center text-[#537D5D] mb-4">Plant Disease Detection</h1>
+            <p class="text-gray-600">Take a photo of your plant to detect diseases and get treatment suggestions</p>
+        </div>
+        <div class="w-full md:w-[85%] bg-white shadow-lg rounded-lg flex justify-center py-4  mt-8 mb-16 md:px-28">
+            <div id="tutor" class=" text-center flex flex-col items-center justify-center gap-4 mb-8">
+                
+                <div class=" p-4 items-center justify-center">
 
-        <div class="max-w-3xl mx-auto">
-            <div id="tutor" class="text-center flex flex-col items-center justify-center gap-4 mb-8">
-                <p class="text-gray-600">Ambil gambar Penyakit tanaman</p>
-                <img class="w-full max-w-md rounded-lg shadow-md" src="../images/tutorial.png" alt="Tutorial">
-                <button id="openCameraButton" onclick="openCamera()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow-md transition">
-                    Buka Kamera
-                </button>
+                    <img class=" w-[200px]" src="../static/camera.png" alt="Tutorial">
+                    <div class="font-bold text-xl mb-4">Take a Plant Photo</div>
+                    <div class="text-gray-600 text-md mb-8">Click here to take a photo of your plant</div>
+
+                    <button id="openCameraButton" onclick="openCamera()" class="bg-[#537D5D] hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow-md transition">
+                        Take Photo
+                    </button>
+                </div>
+                
             </div>
 
             <div class="mt-6 flex flex-col items-center justify-center" id="cameraContainer" style="display: none;">
@@ -54,8 +64,8 @@
                     <video id="camera" autoplay class="w-full border rounded-lg shadow-md"></video>
                 </div>
                 <div class="w-full flex justify-center">
-                    <button onclick="captureImage()" class=" mt-4 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow-md transition">
-                        Ambil Gambar
+                    <button onclick="captureImage()" class=" mt-4 bg-[#537D5D] hover:bg-green-900 text-white px-6 py-3 rounded-lg shadow-md transition">
+                        Take Photo
                     </button>
                 </div>
             </div>
@@ -67,26 +77,51 @@
                     <img id="previewImage" class="border rounded-lg shadow-md max-w-full" />
                 </div>
                 <div class="mt-4 space-x-4">
-                    <button onclick="retakeImage()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md transition">Ambil Ulang</button>
-                    <button onclick="uploadImage()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md transition">Kirim Gambar</button>
+                    <button onclick="retakeImage()" class="bg-[#DDEB9D] hover:bg-lime-200 text-gray-600 px-4 py-2 rounded-lg shadow-md transition">Ambil Ulang</button>
+                    <button onclick="uploadImage()" class="bg-[#537D5D] hover:bg-green-900 text-white px-4 py-2 rounded-lg shadow-md transition">Kirim Gambar</button>
                 </div>
             </div>
 
-            <div id="jsonOutput" class="mt-8 flex flex-col items-center" style="display: none;">
                 
             </div>
         </div>
-    </main>
+            <div id="jsonOutput" class="mt-8 flex flex-col items-center" style="display: none;">
 
-    <footer class="bg-white border-t mt-12">
-        <div class="container mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
-            <p class="text-sm text-gray-500">© 2024 . Hak Cipta harusnya Dilindungi oleh Rafi.</p>
-            <nav class="flex gap-4 mt-4 sm:mt-0">
-                <a class="text-sm text-gray-500 hover:text-green-600" href="#">Kebijakan Privasi</a>
-                <a class="text-sm text-gray-500 hover:text-green-600" href="#">Syarat & Ketentuan</a>
-            </nav>
+    </main>
+<div class="h-fit py-10 bg-[#537D5D] pl-10 pr-32 lg:flex lg:justify-between">
+    <div class="mb-8 lg:w-[25%]">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+        <div class=" text-white">A modern agriculture platform to increase productivity and the welfare of Indonesian farmers.</div>
+    </div>
+    <div class="mb-8 ">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+        <div class=" text-white">
+            <ul>Harvest Price Trends</ul>
+            <ul>Best Seed Recomendations</ul>
+            <ul>Plant Disease Detection</ul>
+            <ul>Chatbot & Market</ul>
         </div>
-    </footer>
+    </div>
+    <div class="mb-8">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Help</div>
+        <div class=" text-white">
+            <ul>FAQ</ul>
+            <ul>User Guides</ul>
+            <ul>Contact Us</ul>
+            <ul>Privacy Policy</ul>
+        </div>
+    </div>
+    <div class="mb-8">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Contact</div>
+        <div class=" text-white">
+            <ul>FAQ</ul>
+            <ul>User Guides</ul>
+            <ul>Contact Us</ul>
+            <ul>Privacy Policy</ul>
+        </div>
+    </div>
+  </div>
+
 
     <script>
         function openCamera() {

@@ -6,9 +6,9 @@
   <title>Seed Recommendation</title>
    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-gray-50">
+<body class="bg-[#F0F7D2] ">
 
-  <div class="items-center flex flex-col mt-16 mx-6 md:mx-28">
+  <div class="items-center flex flex-col mt-16 mx-6 md:px-28">
     <!-- Heading -->
     <div class="mb-4">
       <h1 class="text-2xl font-bold text-center text-[#537D5D]">Best Seed Recommendations</h1>
@@ -61,7 +61,39 @@
     <!-- Container where cards will appear -->
     <div id="cardContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-16 mb-16 w-full px-6"></div>
   </div>
-
+<div class="h-fit py-10 bg-[#537D5D] pl-10 pr-32 lg:flex lg:justify-between">
+    <div class="mb-8 lg:w-[25%]">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+        <div class=" text-white">A modern agriculture platform to increase productivity and the welfare of Indonesian farmers.</div>
+    </div>
+    <div class="mb-8 ">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+        <div class=" text-white">
+            <ul>Harvest Price Trends</ul>
+            <ul>Best Seed Recomendations</ul>
+            <ul>Plant Disease Detection</ul>
+            <ul>Chatbot & Market</ul>
+        </div>
+    </div>
+    <div class="mb-8">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Help</div>
+        <div class=" text-white">
+            <ul>FAQ</ul>
+            <ul>User Guides</ul>
+            <ul>Contact Us</ul>
+            <ul>Privacy Policy</ul>
+        </div>
+    </div>
+    <div class="mb-8">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Contact</div>
+        <div class=" text-white">
+            <ul>FAQ</ul>
+            <ul>User Guides</ul>
+            <ul>Contact Us</ul>
+            <ul>Privacy Policy</ul>
+        </div>
+    </div>
+</div>
   <script>
     async function submitForm() {
       const region = document.getElementById("region").value;
