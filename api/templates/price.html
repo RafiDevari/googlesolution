@@ -11,8 +11,41 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body class="bg-[#F0F7D2] ">
+    <div class="w-full bg-white h-20 fixed top-0 left-0 px-6 lg:px-10 flex items-center justify-between lg:justify-start lg:space-x-10 shadow-md z-50">
+        <a href="/" class="flex items-center space-x-2">
+            <img src="/../static/smiling_pot.png" class="w-24" alt="">
+            <span  class="text-[#537D5D] text-xl font-semibold">SiPanen</span>
+        </a>
+
+        <div  class="hidden lg:flex lg:h-full lg:items-center ">
+            <a href="/price" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🛒 Marketplace</a>
+        </div>
+
+        <button class="lg:hidden text-[#537D5D]" onclick="toggleMenu()">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-[rgba(0,0,0,0.5)] z-40" onclick="toggleMenu()"></div>
+
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-md z-50 transform translate-x-full transition-transform duration-300 ">
+        <div class="flex flex-col space-y-6 p-6">
+            <a href="/price" class="text-gray-800 font-medium hover:text-[#537D5D]">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 font-medium hover:text-[#537D5D]">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 font-medium hover:text-[#537D5D]">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 font-medium hover:text-[#537D5D]">🛒 Marketplace</a>
+        </div>
+    </div>
   <!-- Chart Section -->
-  <div class="flex flex-col items-center mt-16 px-4 md:px-28">
+  <div class="flex flex-col items-center mt-36 px-4  md:px-28">
     <div class="mb-4 w-full text-center">
       <h1 class="text-2xl font-bold text-[#537D5D]">Harvest Price Chart</h1>
     </div>
@@ -29,7 +62,7 @@
   </div>
 
   <!-- Trending Seeds Section -->
-  <div class="mt-16 px-4 md:px-28 mb-16">
+  <div class="mt-16 px-4 md:px-28 ">
     <h1 class="text-2xl font-bold mb-1">Trending Seeds</h1>
     <p class="mb-8 text-gray-600">
       Stay ahead with seeds that are gaining popularity this season:
@@ -119,7 +152,7 @@
       </div>
     </div>
   </div>
-  <div class="h-fit py-10 bg-[#537D5D] pl-10 pr-32 lg:flex lg:justify-between">
+  <div class="h-fit py-10 bg-[#537D5D] mt-16 pl-10 pr-32 lg:flex lg:justify-between">
     <div class="mb-8 lg:w-[25%]">
         <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
         <div class=" text-white">A modern agriculture platform to increase productivity and the welfare of Indonesian farmers.</div>
@@ -157,6 +190,25 @@
 
 
 <script>
+
+      function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        const isOpen = menu.classList.contains('translate-x-0');
+
+        if (isOpen) {
+            // Close menu
+            menu.classList.remove('translate-x-0');
+            menu.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        } else {
+            // Open menu
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+        }
+    }
   const data = {{ data | safe }}; 
   const conversionRate = 0.012;
 
