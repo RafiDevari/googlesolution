@@ -6,9 +6,9 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/penyakit', methods=['GET'])
-def kamera():
-    return render_template('kamera.html')
+@app.route('/disease', methods=['GET'])
+def camera():
+    return render_template('camera.html')
 
 @app.route('/price')
 def price():

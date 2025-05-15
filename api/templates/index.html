@@ -4,30 +4,69 @@
     <title>Home</title>
       <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>  
-    <div class="bg-[#537D5D] w-full h-screen pt-28 lg:pt-40">
-        <div class="flex justify-center lg:text-5xl px-10 text-[#FFFFFF] font-bold ">
+<body class="bg-[#F0F7D2] ">  
+    <div class="w-full bg-white h-20 fixed top-0 left-0 px-6 lg:px-10 flex items-center justify-between lg:justify-start lg:space-x-10 shadow-md z-50">
+        <a href="/" class="flex items-center space-x-2">
+            <img src="/../static/smiling_pot.png" class="w-24" alt="">
+            <span  class="text-[#537D5D] text-xl font-semibold">SiPanen</span>
+        </a>
+
+        <div  class="hidden lg:flex lg:h-full lg:items-center ">
+            <a href="/price" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🛒 Marketplace</a>
+        </div>
+
+        <button class="lg:hidden text-[#537D5D]" onclick="toggleMenu()">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-[rgba(0,0,0,0.5)] z-40" onclick="toggleMenu()"></div>
+
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-md z-50 transform translate-x-full transition-transform duration-300 ">
+        <div class="flex flex-col space-y-6 p-6">
+            <a href="/price" class="text-gray-800 font-medium hover:text-[#537D5D]">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 font-medium hover:text-[#537D5D]">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 font-medium hover:text-[#537D5D]">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 font-medium hover:text-[#537D5D]">🛒 Marketplace</a>
+        </div>
+    </div>
+
+
+
+
+    <div class="relative bg-[#5e875f] h-screen pt-64  overflow-hidden">
+        <!-- Bunga kiri -->
+        <img src="../static/flower.png" class="absolute bottom-[-40px] left-[-120px] w-[280px] md:w-[320px] lg:w-[400px] -scale-x-100" alt="flower">
+        <!-- Bunga kanan -->
+        <img src="../static/flower.png" class="absolute bottom-[-40px] right-[-120px] w-[280px] md:w-[320px] lg:w-[400px]" alt="flower">
+
+        <div class="flex justify-center text-2xl lg:text-5xl px-10 text-white font-bold">
             <h5>Modern Farming Solutions</h5>
         </div>
-        <div class="flex justify-center lg:text-2xl text-center lg:px-44 px-10 mt-5 text-[#F0F7D2] text-xl " >
-           An integrated platform to help farmers increase yields, get the best seed recommendations, detect plant diseases, and connect with the market.
+        <div class="flex justify-center lg:text-2xl text-center lg:px-44 px-10 mt-5 text-[#F0F7D2] text-lg">
+            An integrated platform to help farmers increase yields, get the best seed recommendations, detect plant diseases, and connect with the market.
         </div>
         <div class="w-full flex justify-center items-center">
-            <button class="h-8 lg:w-[16%] w-2/5 text-center text-[#537D5D] font-bold rounded-md bg-white mt-5 shadow-md shadow-gray-600">
+            <button onclick="scrollToMain()" class="hover:bg-gray-200  h-8 lg:w-[16%] w-2/5 text-center text-[#537D5D] font-bold rounded-md bg-white mt-5 shadow-md shadow-gray-600">
                 Get Started
             </button>
         </div>
-        <div class="flex justify-between ">
-            <div><img src="../static/flower.png" class="-scale-x-100" alt=""></div>
-            <div><img src="../static/flower.png"  alt=""></div>
-        </div>
     </div>
-    <div class="lg:h-auto h-fit py-10 flex justify-center">
+
+    <div id="main" class="lg:h-auto h-fit py-10 flex justify-center">
         <div class=" mx-10">
             <div class="flex justify-center text-3xl text-[#537D5D] font-bold ">
                 <h5>Main Feature</h5>
             </div>
-            <div class="flex justify-center text-center px-8 mt-5 text-xl  text-gray-600" >
+            <div class="flex justify-center text-center px-8 mt-5 text-lg lg:text-xl  text-gray-600" >
                 Improve your agricultural productivity with the latest technology
             </div>
             <div class="h-32 rounded-2xl bg-white mt-5 lg:mt-10 shadow-md shadow-gray-600">
@@ -39,8 +78,8 @@
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
                             <h5>Main Feature</h5>
                         </div>
-                        <div class=" text-xs lg:text-base text-gray-600">
-                            Get the latest information on monthly harvest price trends with easy-to-understand visualizations. Plan your harvest time properly to maximize profits.
+                        <div class=" text-sm lg:text-base text-gray-600">
+                            Get the latest information on monthly harvest price trends with easy-to-understand visualizations. Plan your harvest time properly to maximize profits
                         </div>
                     </div>
                 </div>
@@ -54,8 +93,8 @@
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
                             <h5>Best Seed Recommendations</h5>
                         </div>
-                        <div class=" text-xs lg:text-base text-gray-600">
-                            Our intelligent system will recommend the best seeds based on region, resources, and weather forecasts for up to one year ahead.
+                        <div class=" text-sm lg:text-base text-gray-600">
+                            Our intelligent system will recommend the best seeds based on region, resources, and weather forecasts for up to one year ahead
                         </div>
                     </div>
                 </div>
@@ -69,8 +108,23 @@
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
                             <h5>Plant Disease Detection</h5>
                         </div>
-                        <div class=" text-xs lg:text-base text-gray-600">
-                            Upload photos of your crops and our AI system will detect diseases and provide treatment recommendations.
+                        <div class=" text-sm lg:text-base text-gray-600">
+                            Upload photos of your crops and our AI system will detect diseases and provide treatment recommendations
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-32 rounded-2xl bg-white mt-5 lg:mt-10 shadow-md shadow-gray-600">
+                <div class="flex w-full h-full justify-center lg:justify-start lg:pl-10 items-center gap-x-5">
+                    <div >
+                        <img src="../static/market.png" class="w-7 h-7 lg:w-10 lg:h-10" alt="">
+                    </div>
+                    <div class="w-3/4 ">
+                        <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
+                            <h5>Marketplace</h5>
+                        </div>
+                        <div class=" text-sm lg:text-base text-gray-600">
+                            Buy Harvest directly on online marketplace
                         </div>
                     </div>
                 </div>
@@ -82,17 +136,17 @@
                     </div>
                     <div class="w-3/4 ">
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
-                            <h5>Chatbot & Market</h5>
+                            <h5>Chatbot</h5>
                         </div>
-                        <div class=" text-xs lg:text-base text-gray-600">
-                            Ask our chatbot anything about farming and sell your harvest directly on our online market.
+                        <div class=" text-sm lg:text-base text-gray-600">
+                            Ask anything about farming and you will get a direct answer
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="h-fit py-10 bg-[#537D5D] pl-10 pr-32 lg:flex lg:justify-between">
+    <div class="h-fit py-10 bg-[#537D5D] pl-10 pr-32 mt-16 lg:flex lg:justify-between">
     <div class="mb-8 lg:w-[25%]">
         <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
         <div class=" text-white">A modern agriculture platform to increase productivity and the welfare of Indonesian farmers.</div>
@@ -126,15 +180,12 @@
     </div>
 </div>
 
-<!-- Sticky Chat Button and Chat Box Wrapper -->
-<div class="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2">
-    <!-- Chat Box -->
-    <div id="chatBox" class="hidden w-[400px] h-[440px] bg-white shadow-lg rounded-lg border border-gray-300 flex flex-col">
+<!-- <div class="fixed bottom-5 right-5 z-10 flex flex-col items-end gap-2">
+    <div id="chatBox" class="transform scale-0 origin-bottom-right transition-transform duration-300 ease-in-out w-[400px] h-[440px] bg-white shadow-lg rounded-lg border border-gray-300 flex flex-col">
         <div class="bg-[#537D5D] text-white px-4 py-2 font-semibold rounded-t-lg">
-            Chat with us
+            Chat with our AI
         </div>
         <div id="chatMessages" class="flex-1 p-4 overflow-y-auto text-sm space-y-2 text-gray-700">
-            <!-- Messages will appear here -->
         </div>
         <div class="p-2 border-t border-gray-300">
             <form id="chatForm" class="flex gap-2">
@@ -144,31 +195,101 @@
         </div>
     </div>
 
+    <button id="chatToggleBtn" class="w-14 h-14 bg-[#537D5D] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#42624a]">
+        <img src="../static/chatbot.png" class="w-8" alt="" srcset="">
+    </button>
+</div> -->
+
+<div class="fixed bottom-5 right-5 z-10 flex flex-col items-end gap-2">
+    <!-- Placeholder for chat box -->
+    <div id="chatBoxContainer"></div>
+
     <!-- Chat Toggle Button -->
     <button id="chatToggleBtn" class="w-14 h-14 bg-[#537D5D] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#42624a]">
-        💬
+        <img src="../static/chatbot.png" class="w-8" alt="">
     </button>
 </div>
 
-<script>
-    const chatBox = document.getElementById('chatBox');
-    const chatToggleBtn = document.getElementById('chatToggleBtn');
-    const chatForm = document.getElementById('chatForm');
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
 
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        const isOpen = menu.classList.contains('translate-x-0');
+
+        if (isOpen) {
+            // Close menu
+            menu.classList.remove('translate-x-0');
+            menu.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        } else {
+            // Open menu
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+        }
+    }
+    function scrollToMain() {
+        const navbarHeight = document.querySelector('nav')?.offsetHeight || 80; // Adjust if your navbar has a different height
+        const mainSection = document.getElementById('main');
+
+        if (mainSection) {
+            const topPos = mainSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+            window.scrollTo({
+                top: topPos,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    const chatToggleBtn = document.getElementById('chatToggleBtn');
+    const chatBoxContainer = document.getElementById('chatBoxContainer');
+    let chatBox, chatForm, chatInput, chatMessages;
     let conversationHistory = [];
+
+    const createChatBox = () => {
+        chatBoxContainer.innerHTML = `
+            <div id="chatBox" class="transform scale-0 origin-bottom-right transition-transform duration-300 ease-in-out w-[400px] h-[440px] bg-white shadow-lg rounded-lg border border-gray-300 flex flex-col">
+                <div class="bg-[#537D5D] text-white px-4 py-2 font-semibold rounded-t-lg">Chat with our AI</div>
+                <div id="chatMessages" class="flex-1 p-4 overflow-y-auto text-sm space-y-2 text-gray-700"></div>
+                <div class="p-2 border-t border-gray-300">
+                    <form id="chatForm" class="flex gap-2">
+                        <textarea id="chatInput" placeholder="Type your message..." class="w-full resize-none px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:border-blue-300"></textarea>
+                        <button type="submit" class="px-3 py-2 bg-[#537D5D] text-white rounded hover:bg-[#42624a]">Send</button>
+                    </form>
+                </div>
+            </div>
+        `;
+
+        // Assign the elements again
+        chatBox = document.getElementById('chatBox');
+        chatForm = document.getElementById('chatForm');
+        chatInput = document.getElementById('chatInput');
+        chatMessages = document.getElementById('chatMessages');
+
+        // Attach listeners
+        chatForm.addEventListener('submit', handleChatSubmit);
+        chatInput.addEventListener('keydown', handleKeyDown);
+        chatInput.addEventListener('input', handleInputResize);
+    };
 
     // Toggle chat box
     chatToggleBtn.addEventListener('click', () => {
-        chatBox.classList.toggle('hidden');
-        if (chatBox.classList.contains('hidden')) {
-            conversationHistory = []; // Optional: clear conversation when closed
+        if (!chatBox) {
+            createChatBox();
+            requestAnimationFrame(() => chatBox.classList.remove('scale-0'));
+        } else {
+            chatBox.classList.toggle('scale-0');
+            if (chatBox.classList.contains('scale-0')) {
+                conversationHistory = []; // Optional: clear on close
+            }
         }
     });
 
-    // Handle form submission
-    chatForm.addEventListener('submit', async (e) => {
+    async function handleChatSubmit(e) {
         e.preventDefault();
         const message = chatInput.value.trim();
         if (!message) return;
@@ -179,7 +300,7 @@
         chatInput.style.height = 'auto';
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        const prompt = conversationHistory.map(msg => 
+        const prompt = conversationHistory.map(msg =>
             `${msg.role === 'user' ? "User" : "Assistant"}: ${msg.content}`
         ).join('\n') + '\nAssistant:';
 
@@ -192,9 +313,7 @@
 
             const result = await response.json();
             const rawText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
-            const cleaned = rawText
-                .replace(/```(json)?|```/g, '')
-                .trim();
+            const cleaned = rawText.replace(/```(json)?|```/g, '').trim();
 
             appendMessage(cleaned, 'bot');
             conversationHistory.push({ role: 'bot', content: cleaned });
@@ -203,9 +322,8 @@
             console.error(error);
             appendMessage("Error contacting server. Please try again later.", 'bot');
         }
-    });
+    }
 
-    // Append message to chat
     function appendMessage(text, sender) {
         const wrapper = document.createElement('div');
         wrapper.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`;
@@ -218,8 +336,8 @@
 
         const bubble = document.createElement('div');
         bubble.className = `max-w-[75%] px-4 py-2 rounded-xl shadow whitespace-pre-wrap break-words 
-            ${sender === 'user' 
-                ? 'bg-[#DCF8C6] text-right rounded-br-none' 
+            ${sender === 'user'
+                ? 'bg-[#DCF8C6] text-right rounded-br-none'
                 : 'bg-[#F1F0F0] text-left rounded-bl-none'
             }`;
         bubble.innerHTML = formattedText;
@@ -228,19 +346,17 @@
         chatMessages.appendChild(wrapper);
     }
 
-    // Handle Shift+Enter for new line, Enter to submit
-    chatInput.addEventListener('keydown', (e) => {
+    function handleKeyDown(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             chatForm.dispatchEvent(new Event('submit'));
         }
-    });
+    }
 
-    // Auto resize textarea
-    chatInput.addEventListener('input', () => {
+    function handleInputResize() {
         chatInput.style.height = 'auto';
         chatInput.style.height = `${chatInput.scrollHeight}px`;
-    });
+    }
 </script>
 
 

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        green: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#F0F7D2] ">
+
+    <div class="w-full bg-white h-20 fixed top-0 left-0 px-6 lg:px-10 flex items-center justify-between lg:justify-start lg:space-x-10 shadow-md z-50">
+        <a href="/" class="flex items-center space-x-2">
+            <img src="/../static/smiling_pot.png" class="w-24" alt="">
+            <span  class="text-[#537D5D] text-xl font-semibold">SiPanen</span>
+        </a>
+
+        <div  class="hidden lg:flex lg:h-full lg:items-center ">
+            <a href="/price" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🛒 Marketplace</a>
+        </div>
+
+        <button class="lg:hidden text-[#537D5D]" onclick="toggleMenu()">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-[rgba(0,0,0,0.5)] z-40" onclick="toggleMenu()"></div>
+
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-md z-50 transform translate-x-full transition-transform duration-300 ">
+        <div class="flex flex-col space-y-6 p-6">
+            <a href="/price" class="text-gray-800 font-medium hover:text-[#537D5D]">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 font-medium hover:text-[#537D5D]">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 font-medium hover:text-[#537D5D]">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 font-medium hover:text-[#537D5D]">🛒 Marketplace</a>
+        </div>
+    </div>
+    <main class="flex flex-col container items-center mx-auto mt-20  py-8">
+        
+        <div class="flex flex-col items-center mt-8 px-4 md:px-28">
+            <h1 class="text-3xl font-bold text-center text-[#537D5D] mb-4">Plant Disease Detection</h1>
+            <p class="text-gray-600">Take a photo of your plant to detect diseases and get treatment suggestions</p>
+        </div>
+        <div class="w-[95%] md:w-[85%] bg-white shadow-lg rounded-lg flex justify-center py-4  mt-8 mb-16 md:px-28">
+            <div id="tutor" class=" text-center flex flex-col items-center justify-center gap-4 px-4 mb-8">
+                
+                <div class=" p-4 items-center flex flex-col justify-center">
+
+                    <img class="row w-[200px]" src="../static/camera.png" alt="Tutorial">
+                    <div class=" row font-bold text-xl mb-4">Take a Plant Photo</div>
+                    <div class="row text-gray-600 text-md mb-8">Click here to take a photo of your plant</div>
+
+                    <button id="openCameraButton" onclick="openCamera()" class="bg-[#537D5D] hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow-md transition">
+                        Take Photo
+                    </button>
+                </div>
+                
+            </div>
+
+            <div class="mt-6 flex flex-col items-center justify-center" id="cameraContainer" style="display: none;">
+                <div class=" w-full">
+                    <video id="camera" autoplay class="w-full border shadow-md"></video>
+                </div>
+                <div class="w-full flex justify-center">
+                    <button onclick="captureImage()" class=" mt-4 bg-[#537D5D] hover:bg-green-900 text-white px-6 py-3 rounded-lg shadow-md transition">
+                        Take Photo
+                    </button>
+                </div>
+            </div>
+
+            <canvas id="canvas" style="display: none;"></canvas>
+
+            <div id="previewContainer" class="mt-6 text-center" style="display: none;">
+                <div class="flex justify-center">   
+                    <img id="previewImage" class="border rounded-lg shadow-md w-[85%]" />
+                </div>
+                <div class="mt-4 space-x-4">
+                    <button onclick="retakeImage()" class="bg-[#DDEB9D] hover:bg-lime-200 text-gray-600 px-4 py-2 rounded-lg shadow-md transition">Retake Image</button>
+                    <button onclick="uploadImage()" class="bg-[#537D5D] hover:bg-green-900 text-white px-4 py-2 rounded-lg shadow-md transition">Submit Image</button>
+                </div>
+            </div>
+
+                
+            </div>
+        </div>
+
+
+
+        <div id="jsonOutput" class="mt-8 flex flex-col w-[95%] md:w-[85%] md items-center" style="display: none;"></div>
+
+
+    </main>
+<div class="h-fit py-10 bg-[#537D5D] mt-16 pl-10 pr-32 lg:flex lg:justify-between">
+    <div class="mb-8 lg:w-[25%]">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+        <div class=" text-white">A modern agriculture platform to increase productivity and the welfare of Indonesian farmers.</div>
+    </div>
+    <div class="mb-8 ">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+        <div class=" text-white">
+            <ul>Harvest Price Trends</ul>
+            <ul>Best Seed Recomendations</ul>
+            <ul>Plant Disease Detection</ul>
+            <ul>Chatbot & Market</ul>
+        </div>
+    </div>
+    <div class="mb-8">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Help</div>
+        <div class=" text-white">
+            <ul>FAQ</ul>
+            <ul>User Guides</ul>
+            <ul>Contact Us</ul>
+            <ul>Privacy Policy</ul>
+        </div>
+    </div>
+    <div class="mb-8">
+        <div class="mb-4 text-2xl font-semibold underline text-white">Contact</div>
+        <div class=" text-white">
+            <ul>FAQ</ul>
+            <ul>User Guides</ul>
+            <ul>Contact Us</ul>
+            <ul>Privacy Policy</ul>
+        </div>
+    </div>
+  </div>
+
+
+    <script>
+            function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        const isOpen = menu.classList.contains('translate-x-0');
+
+        if (isOpen) {
+            // Close menu
+            menu.classList.remove('translate-x-0');
+            menu.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        } else {
+            // Open menu
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
+        }
+    }
+        function openCamera() {
+            document.getElementById('cameraContainer').style.display = 'block';
+            document.getElementById('previewContainer').style.display = 'none';
+            document.getElementById('openCameraButton').style.display = 'none';
+            document.getElementById('tutor').style.display = 'none';
+            const video = document.getElementById('camera');
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                .then(stream => { video.srcObject = stream; })
+                .catch(error => console.error("Error accessing camera: ", error));
+        }
+
+        function captureImage() {
+            const video = document.getElementById('camera');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            const imageUrl = canvas.toDataURL("image/jpeg");
+            document.getElementById('previewImage').src = imageUrl;
+            document.getElementById('previewContainer').style.display = 'block';
+            document.getElementById('cameraContainer').style.display = 'none';
+        }
+
+        function retakeImage() {
+            document.getElementById('previewContainer').style.display = 'none';
+            openCamera();
+        }
+
+        function uploadImage() {
+            document.getElementById('jsonOutput').style.display = 'flex';
+            document.getElementById('jsonOutput').innerHTML = `
+                <div class="flex justify-center items-center w-full h-20 mt-8">
+                    <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-[#537D5D]"></div>
+                </div>
+
+            `;
+            const canvas = document.getElementById('canvas');
+            canvas.toBlob(blob => {
+                const formData = new FormData();
+                formData.append("image", blob, "image.jpg");
+                
+                fetch("https://flask-api-vercel-test-eight.vercel.app/upload", {  
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    try {
+                        const output = `  
+                        <div class="mb-4 w-full">
+                            <h1 class="text-2xl font-bold">Detection Result</h1>
+                        </div>
+                        <div class="mb-8 w-full">
+                            <h2 class="text-lg text-gray-600">
+                                Below is the diagnosis of your plant's condition along with helpful recommendations.
+                            </h2>
+                        </div>
+
+                        <!-- Diagnosis Card -->
+                        <div class="bg-white shadow-md w-full rounded-lg 
+                            ${data.Rating === 'Safe' ? 'border-green-600' : data.Rating === 'Moderate' ? 'border-yellow-500' : 'border-red-600'} 
+                            border-l-8 p-6 w-full max-w-3xl mx-auto">
+                            
+                            <div class="mb-4">
+                                <h3 class="text-xl font-bold 
+                                    ${data.Rating === 'Safe' ? 'text-green-700' : data.Rating === 'Moderate' ? 'text-yellow-600' : 'text-red-700'}">
+                                    ${data.Rating === 'Safe' ? 'Plant is Healthy' : 'Disease Detected'}
+                                </h3>
+                            </div>
+
+                            <div class="text-sm sm:text-base text-gray-800 space-y-3">
+                                <p><span class="font-semibold">Plant Name:</span> ${data.plant_name || "N/A"}</p>
+                                <p><span class="font-semibold">Severity:</span> ${data.Rating || "N/A"}</p>
+
+                                ${data.Rating !== 'Safe' ? `
+                                <p><span class="font-semibold">Disease Name:</span> ${data.disease_name || "N/A"}</p>
+                                <p><span class="font-semibold">Description:</span> ${data.description || "N/A"}</p>
+                                <p><span class="font-semibold">Treatment:</span></p>
+                                <ul class="list-disc list-inside pl-4 text-gray-700">
+                                    ${data.treatment_suggestion?.split('\n').map(item => `<li>${item.trim()}</li>`).join('') || '<li>No treatment available</li>'}
+                                </ul>
+                                ` : `
+                                <p><span class="font-semibold">Status:</span> <span class="text-green-600 font-medium">Your plant is healthy!</span></p>
+                                <p><span class="font-semibold">Recommendations:</span></p>
+                                <ul class="list-disc list-inside pl-4 text-gray-700">
+                                    ${data.treatment_suggestion?.split('\n').map(item => `<li>${item.trim()}</li>`).join('') || '<li>No recommendations available</li>'}
+                                </ul>
+                                `}
+                            </div>
+                        </div>
+
+                          
+
+                        `;
+                        
+                        document.getElementById('jsonOutput').style.display = 'flex';
+                        document.getElementById('jsonOutput').innerHTML = output;
+                    } catch (error) {
+                        console.error("Parsing error:", error);
+                        document.getElementById('jsonOutput').style.display = 'flex';
+                        document.getElementById('jsonOutput').innerHTML = "<div class='bg-red-100 text-red-700 p-4 rounded-lg'>Terjadi kesalahan saat memproses data.</div>";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById('jsonOutput').style.display = 'flex';
+                    document.getElementById('jsonOutput').innerHTML = "<div class='bg-red-100 text-red-700 p-4 rounded-lg'>Terjadi kesalahan saat mengambil data.</div>";
+                });
+            }, "image/jpeg");
+        }
+    </script>
+</body>
+</html>
