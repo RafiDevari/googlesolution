@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
       <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -42,16 +44,16 @@
 
 
 
-    <div class="relative bg-[#5e875f] h-[1320px] lg:h-[640px] pt-[600px] lg:pt-64 overflow-hidden">
+    <div class="relative bg-[#5e875f] h-screen lg:h-[732px] lg:pt-64 pt-32 overflow-hidden">
         <!-- Bunga kiri -->
         <img src="../static/flower.png" class="absolute bottom-[-40px] left-[-120px] w-[280px] md:w-[320px] lg:w-[400px] -scale-x-100" alt="flower">
         <!-- Bunga kanan -->
         <img src="../static/flower.png" class="absolute bottom-[-40px] right-[-120px] w-[280px] md:w-[320px] lg:w-[400px]" alt="flower">
 
-        <div class="flex justify-center text-5xl px-10 text-white font-bold">
+        <div class="flex justify-center text-2xl lg:text-5xl px-10 text-white font-bold">
             <h5>Modern Farming Solutions</h5>
         </div>
-        <div class="flex justify-center text-2xl text-center lg:px-44 px-10 mt-5 text-[#F0F7D2]">
+        <div class="flex justify-center text-lg lg:text-2xl text-center lg:px-44 px-10 mt-5 text-[#F0F7D2]">
             An integrated platform to help farmers increase yields, get the best seed recommendations, detect plant diseases, and connect with the market.
         </div>
         <div class="w-full flex justify-center items-center">
@@ -63,10 +65,10 @@
 
     <div id="main" class="lg:h-auto h-fit py-10 flex justify-center">
         <div class=" mx-10">
-            <div class="flex justify-center text-3xl text-[#537D5D] font-bold ">
+            <div class="flex justify-center text-2xl lg:text-3xl text-[#537D5D] font-bold ">
                 <h5>Main Feature</h5>
             </div>
-            <div class="flex justify-center text-center px-8 mt-5 text-xl  text-gray-600" >
+            <div class="flex justify-center text-center px-8 mt-5 text-lg lg:text-xl  text-gray-600" >
                 Improve your agricultural productivity with the latest technology
             </div>
             <div class=" rounded-2xl bg-white py-4  mt-5 lg:mt-10 shadow-md shadow-gray-600">
@@ -78,7 +80,7 @@
                         <div class="flex text-2xl text-[#537D5D] font-semibold ">
                             <h5>Harvest Price Trends</h5>
                         </div>
-                        <div class="text-md text-gray-600">
+                        <div class="text-sm lg:text-md text-gray-600">
                             Get the latest information on monthly harvest price trends with easy-to-understand visualizations. Plan your harvest time properly to maximize profits
                         </div>
                     </div>
@@ -93,7 +95,7 @@
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
                             <h5>Best Seed Recommendations</h5>
                         </div>
-                        <div class=" text-md text-gray-600">
+                        <div class=" text-sm lg:text-md text-gray-600">
                             Our intelligent system will recommend the best seeds based on region, resources, and weather forecasts for up to one year ahead
                         </div>
                     </div>
@@ -108,7 +110,7 @@
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
                             <h5>Plant Disease Detection</h5>
                         </div>
-                        <div class=" text-md text-gray-600">
+                        <div class=" text-sm lg:text-md text-gray-600">
                             Upload photos of your crops and our AI system will detect diseases and provide treatment recommendations
                         </div>
                     </div>
@@ -123,7 +125,7 @@
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
                             <h5>Marketplace</h5>
                         </div>
-                        <div class=" text-md text-gray-600">
+                        <div class=" text-sm lg:text-md text-gray-600">
                             Buy Harvest directly on online marketplace
                         </div>
                     </div>
@@ -138,7 +140,7 @@
                         <div class="flex text-lg lg:text-2xl  text-[#537D5D] font-semibold ">
                             <h5>Chatbot</h5>
                         </div>
-                        <div class=" text-md text-gray-600">
+                        <div class=" text-sm lg:text-md text-gray-600">
                             Ask anything about farming and you will get a direct answer
                         </div>
                     </div>
@@ -180,25 +182,6 @@
         </div>
     </div>
 
-<!-- <div class="fixed bottom-5 right-5 z-10 flex flex-col items-end gap-2">
-    <div id="chatBox" class="transform scale-0 origin-bottom-right transition-transform duration-300 ease-in-out w-[400px] h-[440px] bg-white shadow-lg rounded-lg border border-gray-300 flex flex-col">
-        <div class="bg-[#537D5D] text-white px-4 py-2 font-semibold rounded-t-lg">
-            Chat with our AI
-        </div>
-        <div id="chatMessages" class="flex-1 p-4 overflow-y-auto text-sm space-y-2 text-gray-700">
-        </div>
-        <div class="p-2 border-t border-gray-300">
-            <form id="chatForm" class="flex gap-2">
-                <textarea id="chatInput" placeholder="Type your message..."  class="w-full resize-none px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:border-blue-300"></textarea>
-                <button type="submit" class="px-3 py-2 bg-[#537D5D] text-white rounded hover:bg-[#42624a]">Send</button>
-            </form>
-        </div>
-    </div>
-
-    <button id="chatToggleBtn" class="w-14 h-14 bg-[#537D5D] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#42624a]">
-        <img src="../static/chatbot.png" class="w-8" alt="" srcset="">
-    </button>
-</div> -->
 
 <div class="fixed bottom-5 right-5 z-10 flex flex-col items-end gap-2">
     <!-- Placeholder for chat box -->
