@@ -26,4 +26,8 @@ def about():
 def seed():
     return render_template('seed.html')
 
+@app.route('/market')
+def market():
+    return render_template('market.html')
+
 # app.run(debug=True)
