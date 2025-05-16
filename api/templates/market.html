@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#F0F7D2] ">
+
+<div class="w-full bg-white h-20 fixed top-0 left-0 px-6 lg:px-10 flex items-center justify-between lg:justify-start lg:space-x-10 shadow-md z-50">
+        <a href="/" class="flex items-center space-x-2">
+            <img src="/../static/smiling_pot.png" class="w-24" alt="">
+            <span  class="text-[#537D5D] text-xl font-semibold">SiPanen</span>
+        </a>
+
+        <div  class="hidden lg:flex lg:h-full lg:items-center ">
+            <a href="/price" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 px-6 font-semibold hover:text-[#537D5D] h-full flex items-center hover:bg-gray-100">🛒 Marketplace</a>
+        </div>
+
+        <button class="lg:hidden text-[#537D5D]" onclick="toggleMenu()">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-[rgba(0,0,0,0.5)] z-40" onclick="toggleMenu()"></div>
+
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-md z-50 transform translate-x-full transition-transform duration-300 ">
+        <div class="flex flex-col space-y-6 p-6">
+            <a href="/price" class="text-gray-800 font-medium hover:text-[#537D5D]">📈 Harvest Price Trends</a>
+            <a href="/seed" class="text-gray-800 font-medium hover:text-[#537D5D]">🌱 Best Seed Recommendations</a>
+            <a href="/disease" class="text-gray-800 font-medium hover:text-[#537D5D]">🦠 Plant Disease Detection</a>
+            <a href="/market" class="text-gray-800 font-medium hover:text-[#537D5D]">🛒 Marketplace</a>
+        </div>
+    </div>
+
+    
+    <div class="lg:h-auto h-fit py-10 flex justify-center">
+
+
+
+        <div class=" mx-10  mt-20">
+            <div class="flex justify-center text-3xl text-[#537D5D] font-bold ">
+                <h5>Chatbot and Market</h5>
+            </div>
+            <div class="flex justify-center text-center px-8 mt-5 text-lg text-gray-600" >
+                Ask about agricultural information and trade your harvest on a single platform.
+            </div>
+            <div class=" flex justify-center">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-2 place-items-center">
+                    <div class="pb-2 rounded-2xl w-44 bg-white mt-5 lg:mt-10 shadow-md shadow-gray-600">
+                        <div class=" w-full h-full flex justify-center lg:justify-start items-center gap-x-5">
+                            <div class="h-full w-full">
+                                <div class="flex justify-center">
+                                    <img src="../static/smiling_pot.png" class="w-28  lg:w-32 " alt="">
+                                </div>
+                                <div class="h-[1px] w-full bg-black mb-2"></div>
+                                <div>
+                                    <div class="flex justify-center lg:text-base  text-gray-800 font-semibold ">
+                                        <h5>Main Feature</h5>
+                                    </div>
+                                    <div class="flex justify-center text-xs lg:text-xs  text-gray-800 font-base ">
+                                        <h5>New Arrival</h5>
+                                    </div>
+                                    <div class="flex justify-center lg:text-base  text-[#537D5D] font-semibold ">
+                                        <h5>Rp 14.000/Kg</h5>
+                                    </div>
+                                    <div class="flex justify-center mt-2 ">
+                                        <a href="https://shopee.co.id/" class="py-[1px] px-6  text-xs bg-[#537D5D] text-center text-white font-semibold rounded-md  shadow-md shadow-gray-600">
+                                            Buy
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="pb-2 rounded-2xl w-44 bg-white mt-5 lg:mt-10 shadow-md shadow-gray-600">
+                        <div class=" w-full h-full flex justify-center lg:justify-start items-center gap-x-5">
+                            <div class="h-full w-full">
+                                <div class="flex justify-center">
+                                    <img src="../static/smiling_pot.png" class="w-28  lg:w-32 " alt="">
+                                </div>
+                                <div class="h-[1px] w-full bg-black mb-2"></div>
+                                <div>
+                                    <div class="flex justify-center lg:text-base  text-gray-800 font-semibold ">
+                                        <h5>Main Feature</h5>
+                                    </div>
+                                    <div class="flex justify-center text-xs lg:text-xs  text-gray-800 font-base ">
+                                        <h5>New Arrival</h5>
+                                    </div>
+                                    <div class="flex justify-center lg:text-base  text-[#537D5D] font-semibold ">
+                                        <h5>Rp 14.000/Kg</h5>
+                                    </div>
+                                    <div class="flex justify-center mt-2 ">
+                                        <a href="https://shopee.co.id/" class="py-[1px] px-6  text-xs bg-[#537D5D] text-center text-white font-semibold rounded-md  shadow-md shadow-gray-600">
+                                            Buy
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="pb-2 rounded-2xl w-44 bg-white mt-5 lg:mt-10 shadow-md shadow-gray-600">
+                        <div class=" w-full h-full flex justify-center lg:justify-start items-center gap-x-5">
+                            <div class="h-full w-full">
+                                <div class="flex justify-center">
+                                    <img src="../static/smiling_pot.png" class="w-28  lg:w-32 " alt="">
+                                </div>
+                                <div class="h-[1px] w-full bg-black mb-2"></div>
+                                <div>
+                                    <div class="flex justify-center lg:text-base  text-gray-800 font-semibold ">
+                                        <h5>Main Feature</h5>
+                                    </div>
+                                    <div class="flex justify-center text-xs lg:text-xs  text-gray-800 font-base ">
+                                        <h5>New Arrival</h5>
+                                    </div>
+                                    <div class="flex justify-center lg:text-base  text-[#537D5D] font-semibold ">
+                                        <h5>Rp 14.000/Kg</h5>
+                                    </div>
+                                    <div class="flex justify-center mt-2 ">
+                                        <a href="https://shopee.co.id/" class="py-[1px] px-6  text-xs bg-[#537D5D] text-center text-white font-semibold rounded-md  shadow-md shadow-gray-600">
+                                            Buy
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="pb-2 rounded-2xl w-44 bg-white mt-5 lg:mt-10 shadow-md shadow-gray-600">
+                        <div class=" w-full h-full flex justify-center lg:justify-start items-center gap-x-5">
+                            <div class="h-full w-full">
+                                <div class="flex justify-center">
+                                    <img src="../static/smiling_pot.png" class="w-28  lg:w-32 " alt="">
+                                </div>
+                                <div class="h-[1px] w-full bg-black mb-2"></div>
+                                <div>
+                                    <div class="flex justify-center lg:text-base  text-gray-800 font-semibold ">
+                                        <h5>Main Feature</h5>
+                                    </div>
+                                    <div class="flex justify-center text-xs lg:text-xs  text-gray-800 font-base ">
+                                        <h5>New Arrival</h5>
+                                    </div>
+                                    <div class="flex justify-center lg:text-base  text-[#537D5D] font-semibold ">
+                                        <h5>Rp 14.000/Kg</h5>
+                                    </div>
+                                    <div class="flex justify-center mt-2 ">
+                                        <a href="https://shopee.co.id/" class="py-[1px] px-6  text-xs bg-[#537D5D] text-center text-white font-semibold rounded-md  shadow-md shadow-gray-600">
+                                            Buy
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="pb-2 rounded-2xl w-44 bg-white mt-5 lg:mt-10 shadow-md shadow-gray-600">
+                        <div class=" w-full h-full flex justify-center lg:justify-start items-center gap-x-5">
+                            <div class="h-full w-full">
+                                <div class="flex justify-center">
+                                    <img src="../static/smiling_pot.png" class="w-28  lg:w-32 " alt="">
+                                </div>
+                                <div class="h-[1px] w-full bg-black mb-2"></div>
+                                <div>
+                                    <div class="flex justify-center lg:text-base  text-gray-800 font-semibold ">
+                                        <h5>Main Feature</h5>
+                                    </div>
+                                    <div class="flex justify-center text-xs lg:text-xs  text-gray-800 font-base ">
+                                        <h5>New Arrival</h5>
+                                    </div>
+                                    <div class="flex justify-center lg:text-base  text-[#537D5D] font-semibold ">
+                                        <h5>Rp 14.000/Kg</h5>
+                                    </div>
+                                    <div class="flex justify-center mt-2 ">
+                                        <a href="https://shopee.co.id/" class="py-[1px] px-6  text-xs bg-[#537D5D] text-center text-white font-semibold rounded-md  shadow-md shadow-gray-600">
+                                            Buy
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+     <div class="h-fit py-10 bg-[#537D5D] pl-10 pr-32 lg:flex lg:justify-between">
+        <div class="mb-8 lg:w-[25%]">
+            <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+            <div class=" text-white">A modern agriculture platform to increase productivity and the welfare of Indonesian farmers.</div>
+        </div>
+        <div class="mb-8 ">
+            <div class="mb-4 text-2xl font-semibold underline text-white">Si Panen</div>
+            <div class=" text-white">
+                <ul>Harvest Price Trends</ul>
+                <ul>Best Seed Recomendations</ul>
+                <ul>Plant Disease Detection</ul>
+                <ul>Chatbot & Market</ul>
+            </div>
+        </div>
+        <div class="mb-8">
+            <div class="mb-4 text-2xl font-semibold underline text-white">Help</div>
+            <div class=" text-white">
+                <ul>FAQ</ul>
+                <ul>User Guides</ul>
+                <ul>Contact Us</ul>
+                <ul>Privacy Policy</ul>
+            </div>
+        </div>
+        <div class="mb-8">
+            <div class="mb-4 text-2xl font-semibold underline text-white">Contact</div>
+            <div class=" text-white">
+                <ul>FAQ</ul>
+                <ul>User Guides</ul>
+                <ul>Contact Us</ul>
+                <ul>Privacy Policy</ul>
+            </div>
+        </div>
+    </div> 
+    <script>
+        function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
