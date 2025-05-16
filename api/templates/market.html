@@ -49,10 +49,10 @@
 
         <div class=" mx-10  mt-20">
             <div class="flex justify-center text-3xl text-[#537D5D] font-bold ">
-                <h5>Chatbot and Market</h5>
+                <h5>Market</h5>
             </div>
             <div class="flex justify-center text-center px-8 mt-5 text-lg text-gray-600" >
-                Ask about agricultural information and trade your harvest on a single platform.
+                Buy Harvest directly on online marketplace
             </div>
             <div class=" flex justify-center">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-2 place-items-center">
@@ -233,9 +233,24 @@
         </div>
     </div> 
     <script>
-        function toggleMenu() {
+    function toggleMenu() {
         const menu = document.getElementById('mobileMenu');
-        menu.classList.toggle('hidden');
+        const overlay = document.getElementById('overlay');
+
+        const isOpen = menu.classList.contains('translate-x-0');
+
+        if (isOpen) {
+            // Close menu
+            menu.classList.remove('translate-x-0');
+            menu.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        } else {
+            // Open menu
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            overlay.classList.remove('hidden');
         }
+    }
+ 
     </script>
 </body>
